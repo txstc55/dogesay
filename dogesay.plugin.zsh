@@ -72,20 +72,26 @@ DOGE='                                                                 ````
 ## the doge magic
 PROMPT_COMMAND='HIS="$(tail -n 1 $HOME/.zsh_history)";
 				HISL="$(cut -d";" -f2 <<<$HIS|tr a-z A-Z)";
+				HISLEN=${#HISL};
 				if containsElement $HISL
 				then
 				else
 					WOWEMPTYLINE="";
-					WOWEMPTYLINECOUNT=$(( ( RANDOM % 35 )+1));
+					WOWEMPTYLINECOUNT=$(( ( RANDOM % $(( 48 - 7*($HISLEN/10+1) )) )+1));
 					for i in {1..$WOWEMPTYLINECOUNT}
 					do
 						WOWEMPTYLINE="$WOWEMPTYLINE\n"
 					done;
-					WOWGAP="\t";
-					for i in {1..$(( ( RANDOM % 20 )  + 1 ))}
+					WOWGAP=" ";
+					for i in {1..$((  RANDOM % 30 ))}
 					do
-						WOWGAP="$WOWGAP\t"
+						WOWGAP="$WOWGAP "
+					done;
+					WOWGAPEACHLINE=""
+					for i in {1..48}
+					do
+						WOWGAPEACHLINE="$WOWGAPEACHLINE$WOWGAP\n"
 					done;
 					WOWPREIND=$(( ( RANDOM % $WOWARRLEN )  + 1 ));
-					paste <(echo $DOGE) <(echo $WOWEMPTYLINE; echo "$WOWGAP $WOWARR[$WOWPREIND] $HISL"|figlet)| column -s $'\t' -t|lolcat
+					paste <(echo $DOGE) <(echo $WOWGAPEACHLINE) <(echo $WOWEMPTYLINE; echo "$WOWARR[$WOWPREIND] $HISL"|figlet)| column -s $'\t' -t|lolcat
 				fi'
