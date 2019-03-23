@@ -10,9 +10,15 @@ See the demo:
 
 ## Pre-Doge:
 
-You will need lolcat and figlet for this.
+To enjoy the full colorful dogesay, you will need lolcat and figlet for this.
 
 Check out lolcat at [here](https://github.com/busyloop/lolcat) and figlet at [here](http://www.figlet.org/)
+
+But it is ok if you do not want those two. Doge will check if you have lolcat or figlet for you, if you don't have it, it just simply doesn't use it.
+
+You can, however, manually disable the use of lolcat or figlet. On line 22 and 25, you will see two options for lolcat and figlet. Set the one you want to disable to false and doge will not use it.
+
+For better performance, I suggest turn of lolcat. It takes some time to turn doge into rainbow. (By a while I mean less than half a second but you will still notice it)
 
 ## More Doge Words:
 
