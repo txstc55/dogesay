@@ -16,6 +16,6 @@ PROMPT_COMMAND='HIS="$(tail -n 1 $HOME/.zsh_history)";
 					WOWGAP="$WOWGAP\t"
 				done;
 				WOWPREIND=$(( ( RANDOM % $WOWARRLEN )  + 1 ));
-				paste <(less $ZSH/plugins/dogesay/doge_cleaned.txt) <(echo "$WOWEMPTYLINE $WOWGAP $WOWARR[$WOWPREIND]    $HISL"|figlet)| column -s $'\t' -t|lolcat'
+				paste <(less $ZSH/plugins/dogesay/doge_cleaned.txt) <(echo "$WOWEMPTYLINE $WOWGAP $WOWARR[$WOWPREIND] $HISL"|figlet)| column -s $'\t' -t|lolcat'
 
 
