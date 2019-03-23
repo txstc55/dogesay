@@ -1,7 +1,7 @@
 preexec() { eval "$PROMPT_COMMAND" }
 
 ## words that doge say
-declare -a WOWARR=("WOW" "MUCH" "VERY" "INTERESTING" "NICE" "TRULY" "GOOD" "EXCELLENT" "EASY" "INDEED" "HIGHLY" "PRETTY" "QUITE" "SUCH" "MANY" "SO")
+declare -a WOWARR=("WOW" "MUCH" "VERY" "INTERESTING" "NICE" "TRULY" "GOOD" "EXCELLENT" "EASY" "INDEED" "HIGHLY" "PRETTY" "QUITE" "SUCH" "MANY" "SO" "THAT" "DAT" "HOLY")
 WOWARRLEN=${#WOWARR[@]}
 
 ## A list of element that doge should not say a word about
@@ -18,6 +18,12 @@ containsElement () {
 	done
 	return 1
 }
+
+USERLETLOLCAT=false
+SYSALLOWLOLCAT=$(command -v lolccat)
+
+USERLETFIGLET=true
+SYSALLOWFIGLET=$(command -v figlet)
 
 DOGE='                                                                 ````                         
                                                                `/yMMy                         
@@ -82,8 +88,8 @@ PROMPT_COMMAND='HIS="$(tail -n 1 $HOME/.zsh_history)";
 					do
 						WOWEMPTYLINE="$WOWEMPTYLINE\n"
 					done;
-					WOWGAP=" ";
-					for i in {1..$((  RANDOM % 30 ))}
+					WOWGAP="";
+					for i in {0..$((  RANDOM % 30 ))}
 					do
 						WOWGAP="$WOWGAP "
 					done;
@@ -93,5 +99,10 @@ PROMPT_COMMAND='HIS="$(tail -n 1 $HOME/.zsh_history)";
 						WOWGAPEACHLINE="$WOWGAPEACHLINE$WOWGAP\n"
 					done;
 					WOWPREIND=$(( ( RANDOM % $WOWARRLEN )  + 1 ));
-					paste <(echo $DOGE) <(echo $WOWGAPEACHLINE) <(echo $WOWEMPTYLINE; echo "$WOWARR[$WOWPREIND] $HISL"|figlet)| column -s $'\t' -t|lolcat
+					paste <(echo $DOGE) <(echo $WOWGAPEACHLINE) <(echo $WOWEMPTYLINE; echo "$WOWARR[$WOWPREIND] $HISL"|if $USERLETFIGLET&&$SYSALLOWFIGLET; then figlet; else cat;fi)| column -s $'\t' -t|if $USERLETLOLCAT&&$SYSALLOWLOLCAT; then lolcat; else cat;fi
 				fi'
+
+
+
+
+
