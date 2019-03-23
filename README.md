@@ -16,11 +16,22 @@ Check out lolcat at [here](https://github.com/busyloop/lolcat) and figlet at [he
 
 ## More Doge Words:
 
-If you want more words coming out of doge, go to dogesay.plugin.zsh, at the second line, just put in the word you want doge to spit at you into the list:
+If you want more words coming out of doge, go to dogesay.plugin.zsh, at the 4th line, just put in the word you want doge to spit at you into the list:
 
 ```bash
 declare -a WOWARR=("YOUR" "OWN" "WORDS")
 ```
+
+## Doge don't say
+On line 8 of the dogesay.plugin.zsh, you can customize a list of commands you do not want doge to say a word about. Once doge detects that the command you input contains a word that you forbid him to say, he will not say.
+
+Simply add the words like this:
+
+```bash
+declare -a NODOGE=("DOGE" "DO" "NOT" "SAY" "THOSE" "WORDS")
+```
+REMEMBER TO CAPITALIZE THOSE WORDS OTHERWISE DOGE DOESN'T GIVE A FLYING PAN.
+
 ## WARNING
 DOGESAY is using preexec() function in Z shell. If you have defined this function before, it is likely to caluse some problem. Try just merging the PROMPT_COMMAND into whatever you have before.
 
