@@ -5,7 +5,7 @@ declare -a WOWARR=("WOW" "MUCH" "VERY" "INTERESTING" "NICE" "TRULY" "GOOD" "EXCE
 WOWARRLEN=${#WOWARR[@]}
 
 ## A list of element that doge should not say a word about
-declare -a NODOGE=("CMAKE" "MAKE" "CLEAR")
+declare -a NODOGE=("CMAKE" "MAKE" "CLEAR" "WOW" "EXIT" "./")
 
 ## doge check what he should not say
 containsElement () {
@@ -26,8 +26,8 @@ PROMPT_COMMAND='HIS="$(tail -n 1 $HOME/.zsh_history)";
 				if containsElement $HISL
 				then
 				else
-					WOWEMPTYLINE="\n";
-					WOWEMPTYLINECOUNT=$(( ( RANDOM % 5 )+1));
+					WOWEMPTYLINE="";
+					WOWEMPTYLINECOUNT=$(( ( RANDOM % 35 )+1));
 					for i in {1..$WOWEMPTYLINECOUNT}
 					do
 						WOWEMPTYLINE="$WOWEMPTYLINE\n"
@@ -38,7 +38,5 @@ PROMPT_COMMAND='HIS="$(tail -n 1 $HOME/.zsh_history)";
 						WOWGAP="$WOWGAP\t"
 					done;
 					WOWPREIND=$(( ( RANDOM % $WOWARRLEN )  + 1 ));
-					paste <(less $ZSH/plugins/dogesay/doge_cleaned.txt) <(echo "$WOWEMPTYLINE $WOWGAP $WOWARR[$WOWPREIND] $HISL"|figlet)| column -s $'\t' -t|lolcat
+					paste <(less $ZSH/plugins/dogesay/doge_cleaned.txt) <(echo $WOWEMPTYLINE; echo "$WOWGAP $WOWARR[$WOWPREIND] $HISL"|figlet)| column -s $'\t' -t|lolcat
 				fi'
-
-
