@@ -5,13 +5,13 @@ WOWARRLEN=${#WOWARR[@]}
 PROMPT_COMMAND='HIS="$(tail -n 1 $HOME/.zsh_history)";
 				HISL="$(cut -d";" -f2 <<<$HIS|tr a-z A-Z)";
 				WOWEMPTYLINE="\n";
-				WOWEMPTYLINECOUNT=$(( ( RANDOM % 30 )+1))
-				for i in {1..WOWEMPTYLINECOUNT}
+				WOWEMPTYLINECOUNT=$(( ( RANDOM % 5 )+1));
+				for i in {1..$WOWEMPTYLINECOUNT}
 				do
 					WOWEMPTYLINE="$WOWEMPTYLINE\n"
 				done;
 				WOWGAP="\t";
-				for i in {1..$(( ( RANDOM % 5 )  + 1 ))}
+				for i in {1..$(( ( RANDOM % 20 )  + 1 ))}
 				do
 					WOWGAP="$WOWGAP\t"
 				done;
