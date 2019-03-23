@@ -83,7 +83,10 @@ PROMPT_COMMAND='HIS="$(tail -n 1 $HOME/.zsh_history)";
 				then
 				else
 					WOWEMPTYLINE="";
-					WOWEMPTYLINECOUNT=$(( ( RANDOM % $(( 48 - 7*($HISLEN/10+1) )) )+1));
+					WOWPREIND=$(( ( RANDOM % $WOWARRLEN )  + 1 ));
+					WOWWORD=$WOWARR[$WOWPREIND];
+					WOWWORDLEN=${#WOWWORD};
+					WOWEMPTYLINECOUNT=$(( ( RANDOM % $(( 48 - 7*(($HISLEN + $WOWWORDLEN + 1)/10+1) )) )+1));
 					for i in {1..$WOWEMPTYLINECOUNT}
 					do
 						WOWEMPTYLINE="$WOWEMPTYLINE\n"
@@ -98,8 +101,7 @@ PROMPT_COMMAND='HIS="$(tail -n 1 $HOME/.zsh_history)";
 					do
 						WOWGAPEACHLINE="$WOWGAPEACHLINE$WOWGAP\n"
 					done;
-					WOWPREIND=$(( ( RANDOM % $WOWARRLEN )  + 1 ));
-					paste <(echo $DOGE) <(echo $WOWGAPEACHLINE) <(echo $WOWEMPTYLINE; echo "$WOWARR[$WOWPREIND] $HISL"|if $USERLETFIGLET&&$SYSALLOWFIGLET; then figlet; else cat;fi)| column -s $'\t' -t|if $USERLETLOLCAT&&$SYSALLOWLOLCAT; then lolcat; else cat;fi
+					paste <(echo $DOGE) <(echo $WOWGAPEACHLINE) <(echo $WOWEMPTYLINE; echo "$WOWWORD $HISL"|if $USERLETFIGLET&&$SYSALLOWFIGLET; then figlet; else cat;fi)| column -s $'\t' -t|if $USERLETLOLCAT&&$SYSALLOWLOLCAT; then lolcat; else cat;fi
 				fi'
 
 
