@@ -52,10 +52,6 @@ declare -a NODOGE=("DOGE" "IGNORE" "THOSE" "COMMANDS")
 ```
 REMEMBER TO CAPITALIZE THOSE WORDS OTHERWISE DOGE DOESN'T GIVE A FLYING PAN.
 
-## WARNING
-DOGESAY is using preexec() function in Z shell. If you have defined this function before, it is likely to caluse some problem. Try just merging the PROMPT_COMMAND into whatever you have before.
-
-
 ENJOY!
 
                                                                  ````                         

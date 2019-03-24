@@ -1,7 +1,7 @@
-preexec() { eval "$PROMPT_COMMAND" }
+## Welcome to use DOGESAY zsh plugin!
 
 ## words that doge say
-declare -a WOWARR=("WOW" "MUCH" "VERY" "INTERESTING" "NICE" "TRULY" "GOOD" "EXCELLENT" "EASY" "INDEED" "HIGHLY" "PRETTY" "QUITE" "SUCH" "MANY" "SO" "THAT" "DAT" "HOLY")
+declare -a WOWARR=("WOW" "MUCH" "VERY" "INTERESTING" "NICE" "TRULY" "GOOD" "EXCELLENT" "EASY" "INDEED" "HIGHLY" "PRETTY" "QUITE" "SUCH" "MANY" "SO" "THAT" "DAT" "HOLY" "LOL" "COOL")
 WOWARRLEN=${#WOWARR[@]}
 
 ## A list of element that doge should not say a word about
@@ -18,13 +18,13 @@ containsElement () {
 	done
 	return 1
 }
-
-USERLETLOLCAT=false
+## disable or enable the use of lolcat here
+USERLETLOLCAT=true
 SYSALLOWLOLCAT=$(command -v lolccat)
-
+## disable or enable the use of figlet here
 USERLETFIGLET=true
 SYSALLOWFIGLET=$(command -v figlet)
-
+## the master himself
 DOGE='                                                                 ````                         
                                                                `/yMMy                         
                    `oooooo`                                   :sMmyMy                         
@@ -76,33 +76,38 @@ DOGE='                                                                 ````
 '
 
 ## the doge magic
-PROMPT_COMMAND='HIS="$(tail -n 1 $HOME/.zsh_history)";
-				HISL="$(cut -d";" -f2 <<<$HIS|tr a-z A-Z)";
-				HISLEN=${#HISL};
-				if containsElement $HISL
-				then
-				else
-					WOWEMPTYLINE="";
-					WOWPREIND=$(( ( RANDOM % $WOWARRLEN )  + 1 ));
-					WOWWORD=$WOWARR[$WOWPREIND];
-					WOWWORDLEN=${#WOWWORD};
-					WOWEMPTYLINECOUNT=$(( ( RANDOM % $(( 48 - 7*(($HISLEN + $WOWWORDLEN + 1)/10+1) )) )+1));
-					for i in {1..$WOWEMPTYLINECOUNT}
-					do
-						WOWEMPTYLINE="$WOWEMPTYLINE\n"
-					done;
-					WOWGAP="";
-					for i in {0..$((  RANDOM % 30 ))}
-					do
-						WOWGAP="$WOWGAP "
-					done;
-					WOWGAPEACHLINE=""
-					for i in {1..48}
-					do
-						WOWGAPEACHLINE="$WOWGAPEACHLINE$WOWGAP\n"
-					done;
-					paste <(echo $DOGE) <(echo $WOWGAPEACHLINE) <(echo $WOWEMPTYLINE; echo "$WOWWORD $HISL"|if $USERLETFIGLET&&$SYSALLOWFIGLET; then figlet; else cat;fi)| column -s $'\t' -t|if $USERLETLOLCAT&&$SYSALLOWLOLCAT; then lolcat; else cat;fi
-				fi'
+
+DOGE_MAGIC(){
+  HIS="$(tail -n 1 $HOME/.zsh_history)";
+  HISL="$(cut -d";" -f2 <<<$HIS|tr a-z A-Z)";
+  HISLEN=${#HISL};
+  if containsElement $HISL
+  then
+  else
+    WOWEMPTYLINE="";
+    WOWPREIND=$(( ( RANDOM % $WOWARRLEN )  + 1 ));
+    WOWWORD=$WOWARR[$WOWPREIND];
+    WOWWORDLEN=${#WOWWORD};
+    WOWEMPTYLINECOUNT=$(( ( RANDOM % $(( 48 - 7*(($HISLEN + $WOWWORDLEN + 1)/10+1) )) )+1));
+    for i in {1..$WOWEMPTYLINECOUNT}
+    do
+      WOWEMPTYLINE="$WOWEMPTYLINE\n"
+    done;
+    WOWGAP="";
+    for i in {0..$((  RANDOM % 30 ))}
+    do
+      WOWGAP="$WOWGAP "
+    done;
+    WOWGAPEACHLINE=""
+    for i in {1..48}
+    do
+      WOWGAPEACHLINE="$WOWGAPEACHLINE$WOWGAP\n"
+    done;
+    paste <(echo $DOGE) <(echo $WOWGAPEACHLINE) <(echo $WOWEMPTYLINE; echo "$WOWWORD $HISL"|if $USERLETFIGLET&&$SYSALLOWFIGLET; then figlet; else cat;fi)| column -s $'\t' -t|if $USERLETLOLCAT&&$SYSALLOWLOLCAT; then lolcat; else cat;fi
+  fi
+}
+
+preexec_functions+=(DOGE_MAGIC)
 
 
 
