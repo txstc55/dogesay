@@ -34,7 +34,7 @@ On line 8 of the dogesay.plugin.zsh, you can customize a list of commands you do
 Simply add the words like this:
 
 ```bash
-declare -a NODOGE=("DOGE" "DO" "NOT" "SAY" "THOSE" "WORDS")
+declare -a NODOGE=("DOGE" "IGNORE" "THOSE" "COMMANDS")
 ```
 REMEMBER TO CAPITALIZE THOSE WORDS OTHERWISE DOGE DOESN'T GIVE A FLYING PAN.
 
