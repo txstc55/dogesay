@@ -1,5 +1,7 @@
 # dogesay
 
+This is an oh-my-zsh plugin, it does not work in normal bash.
+
 Let doge repeat your command
 
 with much wow
@@ -7,6 +9,18 @@ with much wow
 See the demo:
 
 ![Alt Text](https://raw.githubusercontent.com/txstc55/dogesay/master/dogesay.gif)
+
+Install it by 
+```bash
+git clone https://github.com/txstc55/dogesay
+mv dogesay path/to/oh-my-zsh/plugin/folder
+```
+
+Then in .zshrc, enable it by changing the line:
+
+```
+plugins=(... dogesay)
+```
 
 ## Pre-Doge:
 
