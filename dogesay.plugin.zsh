@@ -20,10 +20,10 @@ containsElement () {
 }
 ## disable or enable the use of lolcat here
 USERLETLOLCAT=true
-SYSALLOWLOLCAT=$(command -v lolccat)
+SYSALLOWLOLCAT=true; if ! type "lolcat" > /dev/null; then SYSALLOWLOLCAT=false;fi
 ## disable or enable the use of figlet here
 USERLETFIGLET=true
-SYSALLOWFIGLET=$(command -v figlet)
+SYSALLOWFIGLET=true; if ! type "figlet" > /dev/null; then SYSALLOWFIGLET=false;fi
 ## the master himself
 DOGE='                                                                 ````                         
                                                                `/yMMy                         
@@ -108,8 +108,5 @@ DOGE_MAGIC(){
 }
 
 preexec_functions+=(DOGE_MAGIC)
-
-
-
 
 
