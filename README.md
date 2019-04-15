@@ -28,7 +28,7 @@ To enjoy the full colorful dogesay, you will need lolcat and figlet for this.
 
 Check out lolcat at [here](https://github.com/busyloop/lolcat) and figlet at [here](http://www.figlet.org/)
 
-The original lolcat is quite slow though, [](https://github.com/jaseg/lolcat) is a c-implementation of lolcat that runs much faster, which I strongly recommand.
+The original lolcat is quite slow though, [here](https://github.com/jaseg/lolcat) is a c-implementation of lolcat that runs much faster, which I strongly recommand.
 
 But it is ok if you do not want those two. Doge will check if you have lolcat or figlet for you, if you don't have it, it just simply doesn't use it.
 
